@@ -2,7 +2,8 @@
 
 An interactive PC builder simulator with a terminal aesthetic. Browse real components, configure your build, and track compatibility and total price in real time.
 
-Preview Link: 
+Preview Link: https://pc-assembly-playground.vercel.app/
+
 ---
 
 ## ✨ Features
