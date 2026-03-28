@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RigLab - PC Assembly Playground
 
-## Getting Started
+An interactive PC builder simulator with a terminal aesthetic. Browse real components, configure your build, and track compatibility and total price in real time.
 
-First, run the development server:
+Preview Link: 
+---
+
+## ✨ Features
+
+- Browse components across 7 categories: Motherboard, CPU, GPU, RAM, PSU, Storage, Cooler
+- Terminal-style build log that tracks every selection and change
+- Socket compatibility checker (CPU ↔ Motherboard)
+- Live total price calculation
+- Component data scraped from PCPartPicker
+
+---
+
+## 🛠️ Built With
+
+- **Vite** - Build 
+- **React** - Core 
+- **Next.js** - App Router
+- **Tailwind CSS** - Styling
+- **Node.js + Puppeteer** - Component data scraper
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# Clone the repo
+git clone https://github.com/SalemGodfrey/pc-assembly-playground.git
+cd pc-assembly-playground
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 💾 Updating Component Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Component data is stored in `prices.json`. To refresh it with the latest prices from PCPartPicker:
 
-## Learn More
+```bash
+# Script directiory
+cd src
+cd api
 
-To learn more about Next.js, take a look at the following resources:
+# Run scrapper
+node scraper.js
+```
+The scraper opens a real browser window via Puppeteer. There are few thousand of components, so the process takes a few minutes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Inportant note: Manual scraping is not recommended. Component prices are automatically updated once a month via GitHub Actions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+```
+src/
+├── api/
+│   ├── prices.json
+│   └── scraper.js
+├── app/
+│   ├── cooler/
+│   │   └── page.js
+│   ├── cpu/
+│   │   └── page.js
+│   ├── gpu/
+│   │   └── page.js
+│   ├── psu/
+│   │   └── page.js
+│   ├── ram/
+│   │   └── page.js
+│   ├── storage/
+│   │   └── page.js
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+└── components/
+    ├── BottomPanel.jsx
+    ├── Card.jsx
+    ├── LeftPanel.jsx
+    ├── PricesContext.jsx
+    └── RightPanel.jsx
+```
