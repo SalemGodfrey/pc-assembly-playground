@@ -87,8 +87,8 @@ async function main() {
   console.log("Scraping Storage...");
   const storageRows = await scrapeCategory(browser, "https://pcpartpicker.com/products/internal-hard-drive/", {
     capacity: 2,
-    type: 3,
-    interface: 4,
+    type: 4,
+    interface: 7,
   });
 
   console.log("Scraping GPUs...");
